@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 // between having no braking force and having maximum braking force diyor chief delphide öbür türlü aniden durunca problem olabiliyormuş
 // https://www.chiefdelphi.com/t/what-is-brake-coast-mode/163649/10
 
-private class Feeder extends Subsystembase {
+public class Feeder extends SubsystemBase{
   /** Creates a new Feeder. */
 
   public WPI_TalonSRX feeder = new WPI_TalonSRX(3);

@@ -18,8 +18,8 @@ import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
   /** Creates a new Shooter. */
-  WPI_TalonFX shooterMasterMotor = new WPI_TalonFX(Constants.SHOOTER_MASTER_ID);
-  WPI_TalonFX shooterSlaveMotor = new WPI_TalonFX(Constants.SHOOTER_SLAVE_ID);
+  WPI_TalonFX shooterMasterMotor = new WPI_TalonFX(4);
+  WPI_TalonFX shooterSlaveMotor = new WPI_TalonFX(9);
 
   private double kP = 0.11533;
   private double kI = 0.0;

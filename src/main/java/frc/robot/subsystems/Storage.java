@@ -1,11 +1,11 @@
-package Storage;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-private class Storage extends SubsystemBase {
+public class Storage extends SubsystemBase {
   /** Creates a new Storage. */
   public WPI_TalonSRX storage = new WPI_TalonSRX(2);
   public Storage() {
@@ -13,11 +13,11 @@ private class Storage extends SubsystemBase {
   }
 
   public void storageForward(){
-    storage.set(ControlMode.PercentOutput, Constants.STORAGE_SPEED);
+    storage.set(ControlMode.PercentOutput, 0.5);
   }
 
   public void storageBackwards(){
-    storage.set(ControlMode.PercentOutput, -1 * Constants.STORAGE_SPEED);
+    storage.set(ControlMode.PercentOutput, -1 * 0.5);
   }
 
   public void stop(){

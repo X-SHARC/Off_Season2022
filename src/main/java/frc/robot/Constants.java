@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
@@ -17,7 +19,8 @@ import edu.wpi.first.math.util.Units;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Constants {public static final class Swerve{
+public final class Constants {
+    public static final class Swerve{
     public static final double kDriveP = 2.432;
     public static final double kDriveI = 0.0;
     public static final double kDriveD = 0.0;
@@ -51,7 +54,24 @@ public final class Constants {public static final class Swerve{
      public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
          new TrapezoidProfile.Constraints(
              kMaxAngularSpeed, kModuleMaxAngularAcceleration);
+
+    public static final class Vision{
+        //Target Data
+        public static final double targetWidth =
+            Units.inchesToMeters(41.30) - Units.inchesToMeters(6.70); // meters
+        public static final double targetHeight = Units.inchesToMeters(98.19) - Units.inchesToMeters(81.19); // meters
+        public static final double targetHeightAboveGround = Units.inchesToMeters(81.19); // meters
+
+        public static final double kFarTgtXPos = Units.feetToMeters(54);
+        public static final double kFarTgtYPos =
+                Units.feetToMeters(27 / 2) - Units.inchesToMeters(43.75) - Units.inchesToMeters(48.0 / 2.0);
+        public static final Pose2d kFarTargetPose =
+                new Pose2d(new Translation2d(kFarTgtXPos, kFarTgtYPos), new Rotation2d(0.0));
+    }
+
+    
 }
+
 
 public static final boolean kGyroReversed = true;
 }

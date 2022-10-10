@@ -1,7 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
@@ -10,11 +6,15 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.Hood;
+import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Storage;
 
 
 public class RobotContainer {
   Hood hood = new Hood();
-  XboxController operator = new XboxController(1);
+  Shooter shooter = new Shooter();
+  Storage storage = new Storage();
+  XboxController operator = new XboxController(0);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -31,7 +31,18 @@ public class RobotContainer {
     JoystickButton hoodTest = new JoystickButton(operator, 1);
     hoodTest.whileHeld(new RunCommand(()->hood.hoodTest(), hood));
     hoodTest.whenReleased(new RunCommand(()->hood.stop(), hood));
-    
+
+    JoystickButton hoodTestUp = new JoystickButton(operator, 4);
+    hoodTestUp.whileHeld(new RunCommand(()->hood.hoodTestUp(), hood));
+    hoodTestUp.whenReleased(new RunCommand(()->hood.stop(), hood));
+
+    JoystickButton shooterTest = new JoystickButton(operator, 2);
+    shooterTest.whileHeld(new RunCommand(()->shooter.shootBall(), shooter));
+    shooterTest.whenReleased(new RunCommand(()->shooter.stop(), shooter));
+
+    JoystickButton storageTest = new JoystickButton(operator, 3);
+    storageTest.whileHeld(new RunCommand(()->storage.storageForward(), storage));
+    storageTest.whenReleased(new RunCommand(()->storage.stop()));
   }
 
   /**
